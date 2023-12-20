@@ -1,8 +1,4 @@
 
-
-# 6785173262:AAEqk3pFG3utpEQ2XOUQJourmTw-brnpjYo
-#@Notifyic_Bot
-
 from typing import Final
 from telegram import Update
 from telegram.ext import Application, CommandHandler,filters, ContextTypes,MessageHandler
@@ -17,8 +13,8 @@ from pycoingecko import CoinGeckoAPI
 
 google_ticker = ["BTC-USD", "DOGE-USD", "ETH-USD"]
 live_crypto_list=["bitcoin"]
-Token: Final='6785173262:AAEqk3pFG3utpEQ2XOUQJourmTw-brnpjYo'
-Bot_username: Final = '@Notifyic_Bot'
+Token: Final='#apikey'
+Bot_username: Final = '#@botname'
 def get_live_stock_data(ticker_symbols):
     results = []
     for stocks in ticker_symbols:
@@ -71,7 +67,7 @@ async def get_live_data_command(update: Update, context: ContextTypes.DEFAULT_TY
 
 
 
-#responses
+
 
 def handle_response(text: str)-> str:
     if 'hello' in text:
@@ -108,50 +104,20 @@ async def error(update: Update,context:ContextTypes.DEFAULT_TYPE):
 if __name__ == '__main__':
     print('starting bot')
     app=Application.builder().token(Token).build()
-#commands
+
     app.add_handler(CommandHandler('start',start_command))
     app.add_handler(CommandHandler('help',help_command))
     app.add_handler(CommandHandler('Custom',Custom_command))
     app.add_handler(CommandHandler('get',Get_data_command))
     app.add_handler(CommandHandler('cur',get_live_data_command))
     #app.add_handler(CommandHandler('Add_stock_in_list',Add_stock_in_list))
-#messages
+
     app.add_handler(MessageHandler(filters.TEXT,handle_message))
 
-    #error
+    
 
     app.add_error_handler(error)
 
     print('polling....')
     
     app.run_polling(poll_interval=3) 
-
-
-
-
-
-
-
-#####################################################################################
-# # Import libraries 
-# import json 
-# import requests 
-  
-# # Defining Binance API URL 
-# key = "https://api.binance.com/api/v3/ticker/price?symbol="
-  
-# # Making list for multiple crypto's 
-# currencies = ["BTCUSDT", "DOGEUSDT", "LTCUSDT"] 
-# j = 0
-  
-# # running loop to print all crypto prices 
-# for i in currencies: 
-    
-#     # completing API for request 
-#     url = key+currencies[j]   
-#     data = requests.get(url) 
-#     data = data.json() 
-#     j = j+1
-#     print(f"{data['symbol']} price is {data['price']}") 
-
-
